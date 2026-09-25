@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Family Watch List</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <!-- Main grid -->
+  <section id="home" class="screen">
+    <header class="topbar">
+      <div>
+        <h1>Family Watch List</h1>
+        <p class="sub">Pick a show with the arrow buttons, then press OK. A grown-up will say yes first.</p>
+      </div>
+      <button class="f btn small" id="settingsBtn">⚙ Parent settings</button>
+    </header>
+    <main id="sections"></main>
+    <footer class="foot">Where to watch: US, checked Sep 25, 2026 via JustWatch. Posters courtesy of JustWatch.</footer>
+  </section>
+
+  <!-- Ask a grown-up -->
+  <section id="ask" class="screen overlay" hidden>
+    <div class="askwrap">
+      <img id="askPoster" class="bigposter" alt="">
+      <div class="askinfo">
+        <h2 id="askTitle"></h2>
+        <p id="askMeta" class="meta"></p>
+        <div id="askState"></div>
+        <div id="askButtons" class="btnrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIN pad -->
+  <section id="pinScreen" class="screen overlay" hidden>
+    <div class="pinbox">
+      <h2 id="pinTitle">Enter PIN</h2>
+      <p id="pinHelp" class="meta"></p>
+      <div id="pinDots" class="dots" aria-live="polite"></div>
+      <p id="pinMsg" class="msg" aria-live="assertive"></p>
+      <div id="pad" class="pad"></div>
+      <button class="f btn ghost" id="pinCancel">Cancel</button>
+    </div>
+  </section>
+
+  <!-- Phone setup / settings -->
+  <section id="settings" class="screen overlay" hidden>
+    <div class="settingsbox">
+      <h2 id="setTitle">Parent settings</h2>
+      <div class="setgrid">
+        <div class="setcol">
+          <h3>Phone approval (ntfy)</h3>
+          <ol class="steps">
+            <li>Install the free <b>ntfy</b> app on your phone (App Store / Google Play).</li>
+            <li>In the app tap <b>+</b> (Subscribe to topic), keep server <b>ntfy.sh</b>, and type this topic exactly:</li>
+          </ol>
+          <div id="topicBig" class="topic"></div>
+          <p class="meta small">Or scan the QR code to open the topic on your phone. Keep the topic private: anyone who knows it can approve.</p>
+          <div class="field">
+            <label for="topicInput">Topic (edit to use the same one on several TVs)</label>
+            <input id="topicInput" class="f" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">
+          </div>
+          <div class="btnrow wrap">
+            <button class="f btn" id="saveTopic">Save topic</button>
+            <button class="f btn" id="newTopic">New random topic</button>
+            <button class="f btn" id="testNtfy">Send test notification</button>
+            <button class="f btn ghost" id="offTopic">Turn off phone approval</button>
+          </div>
+          <p id="setMsg" class="msg" aria-live="polite"></p>
+        </div>
+        <div class="setcol center">
+          <div id="qr" class="qr"></div>
+          <div class="btnrow wrap">
+            <button class="f btn" id="changePin">Change PIN</button>
+            <button class="f btn primary" id="setDone">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Player -->
+  <section id="player" class="screen overlay dark" hidden>
+    <div class="playerbar">
+      <span id="playerTitle"></span>
+      <div class="btnrow">
+        <button class="f btn small" id="fsBtn">⛶ Full screen</button>
+        <button class="f btn small ghost" id="closePlayer">✕ Close</button>
+      </div>
+    </div>
+    <div id="frameWrap" class="framewrap"></div>
+  </section>
+</div>
+<div id="toast" class="toast" hidden></div>
+<script src="sha256.js"></script>
+<script src="qrcode.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
